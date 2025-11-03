@@ -2,6 +2,11 @@
   const form = document.getElementById('loginForm');
   const msg = document.getElementById('msg');
 
+  const demoUsers = [
+    { username: "admin@codeflow.com", password: "Admin123" },
+    { username: "demo@codeflow.com", password: "Demo123" }
+  ];
+
   const showMessage = (text, type = "error") => {
     msg.textContent = text;
     msg.style.color = type === "error" ? "red" : "green";
@@ -22,6 +27,20 @@
       return;
     }
 
-    showMessage("Datos válidos, procesando...", "success");
+    const userFound = demoUsers.find(
+      u => u.username === username && u.password === password
+    );
+
+    if (!userFound) {
+      showMessage("Credenciales inválidas, intente nuevamente");
+      return;
+    }
+
+    localStorage.setItem("login_demo_user", username);
+    showMessage("¡Inicio de sesión exitoso!", "success");
+
+    setTimeout(() => {
+      window.location.href = "dashboard.html";
+    }, 1000);
   });
 })();
