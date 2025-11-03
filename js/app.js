@@ -3,8 +3,7 @@
   const msg = document.getElementById('msg');
 
   const demoUsers = [
-    { username: "admin@codeflow.com", password: "Admin123" },
-    { username: "demo@codeflow.com", password: "Demo123" }
+    { username: "admin@codeflow.com", password: "Admin123" }
   ];
 
   const showMessage = (text, type = "error") => {
